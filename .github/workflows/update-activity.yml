@@ -1,0 +1,20 @@
+name: Update GitHub Activity
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: herndev/github-activity-readme@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with: 
+          COMMIT_MSG: "[AUTOMATED] Updated Activities from KhalilMinalang!" 
+          GH_USERNAME: "KhalilMinalang"
+
